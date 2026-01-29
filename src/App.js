@@ -6,7 +6,6 @@ import { EditProvider } from "./components/editContext";
 import { TaskProvider } from "./components/taskContext";
 
 function App() {
-  // Test commit of feature branch 6
   const [task, setTask] = useState([]);
 
   const [editing, setEditing] = useState(false);
