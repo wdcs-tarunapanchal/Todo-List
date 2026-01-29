@@ -5,6 +5,8 @@ import { EditContext } from "./editContext";
 import { TaskContext } from "./taskContext";
 
 function EditList() {
+  // const EditList = (props) => {
+
   const [task, setTask] = useContext(TaskContext);
   const [editing, setEditing] = useContext(EditContext);
   const [currentTask] = useContext(CurrentContext);

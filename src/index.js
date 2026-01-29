@@ -9,6 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 
 // TEst commit of features US-5
 const root = ReactDOM.createRoot(document.getElementById("root"));
+// console.log("Hello World");
 root.render(
   <React.StrictMode>
     <App />
