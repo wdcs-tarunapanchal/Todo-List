@@ -1,25 +1,23 @@
-import './App.css';
-import Todo from './components/Todo';
-import { TaskProvider } from './components/taskContext';
-import { useState } from 'react'
-import { EditProvider } from './components/editContext';
-import { CurrentProvider } from './components/currentContext';
+import { useState } from "react";
+import "./App.css";
+import Todo from "./components/Todo";
+import { CurrentProvider } from "./components/currentContext";
+import { EditProvider } from "./components/editContext";
+import { TaskProvider } from "./components/taskContext";
 
 function App() {
   const [task, setTask] = useState([]);
-  
+
   const [editing, setEditing] = useState(false);
 
-  const initialTodo = { id: null, task_name: '', status: '' };
+  const initialTodo = { id: null, task_name: "", status: "" };
 
   const [currentTask, setCurrentTask] = useState(initialTodo);
-
+  // console.log("currentTask", currentTask);
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Todo Task
-        </p>
+        <p>Todo Task</p>
       </header>
       <TaskProvider value={[task, setTask]}>
         <EditProvider value={[editing, setEditing]}>
