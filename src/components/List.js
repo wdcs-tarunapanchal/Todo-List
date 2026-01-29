@@ -23,14 +23,27 @@ function List() {
         setCurrentTask(task);
     }
 
+    const getStatusBadge = (status) => {
+        switch(status) {
+            case 'Pending':
+                return <span style={{ display: 'inline-block', padding: '5px 10px', backgroundColor: '#ffc107', color: '#000', borderRadius: '20px', fontWeight: 'bold', fontSize: '12px' }}>📌 {status}</span>;
+            case 'InProgress':
+                return <span style={{ display: 'inline-block', padding: '5px 10px', backgroundColor: '#17a2b8', color: '#fff', borderRadius: '20px', fontWeight: 'bold', fontSize: '12px' }}>🔄 {status}</span>;
+            case 'Complete':
+                return <span style={{ display: 'inline-block', padding: '5px 10px', backgroundColor: '#28a745', color: '#fff', borderRadius: '20px', fontWeight: 'bold', fontSize: '12px' }}>✅ {status}</span>;
+            default:
+                return status;
+        }
+    };
+
     return (
         <div>
-            <Table striped bordered hover>
-                <thead>
+            <Table striped bordered hover responsive style={{ marginBottom: '0' }}>
+                <thead style={{ backgroundColor: '#667eea', color: 'white' }}>
                     <tr>
-                        <th>Task</th>
-                        <th>Status</th>
-                        <th> Action</th>
+                        <th style={{ padding: '15px' }}>📝 Task</th>
+                        <th style={{ padding: '15px' }}>📊 Status</th>
+                        <th style={{ padding: '15px' }}>⚙️ Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,19 +51,35 @@ function List() {
                         task.map(todo => {
                             const { id, task_name, status } = todo;
                             return (
-                                <tr key={id}>
-                                    <td>{task_name}</td>
-                                    <td>{status}</td>
-                                    <td>
-                                        <Button variant="secondary" id={id} onClick={() => deleteTodo(id)}>Delete</Button> &nbsp;
-                                        <Button variant="light" onClick={() => editTodo(id, todo)}>Edit</Button>
+                                <tr key={id} style={{ verticalAlign: 'middle' }}>
+                                    <td style={{ padding: '15px', fontSize: '15px' }}>{task_name}</td>
+                                    <td style={{ padding: '15px', textAlign: 'center' }}>{getStatusBadge(status)}</td>
+                                    <td style={{ padding: '15px', textAlign: 'center' }}>
+                                        <Button 
+                                            variant="danger" 
+                                            size="sm"
+                                            id={id} 
+                                            onClick={() => deleteTodo(id)}
+                                            style={{ marginRight: '8px' }}
+                                        >
+                                            🗑️ Delete
+                                        </Button>
+                                        <Button 
+                                            variant="warning" 
+                                            size="sm"
+                                            onClick={() => editTodo(id, todo)}
+                                        >
+                                            ✏️ Edit
+                                        </Button>
                                     </td>
                                 </tr>
                             )
                         })
                     ) : (
                         <tr>
-                            <td colSpan={4}>No task found</td>
+                            <td colSpan={3} style={{ padding: '30px', color: '#999', fontSize: '16px' }}>
+                                🎉 No tasks yet! Add one to get started.
+                            </td>
                         </tr>
                     )
                     }
