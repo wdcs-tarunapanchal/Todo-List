@@ -14,7 +14,6 @@ function App() {
 
   const [currentTask, setCurrentTask] = useState(initialTodo);
 
-  //Feature 2: Provide contexts to the component tree
   return (
     <div className="App">
       <header className="App-header">
