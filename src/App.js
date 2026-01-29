@@ -6,6 +6,8 @@ import { EditProvider } from "./components/editContext";
 import { TaskProvider } from "./components/taskContext";
 
 function App() {
+  // State to hold the list of tasks : Feature US-7
+
   const [task, setTask] = useState([]);
 
   const [editing, setEditing] = useState(false);
